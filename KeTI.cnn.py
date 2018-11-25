@@ -1,20 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Nov 24 16:39:14 2018
-
-@author: jagth
-"""
-
-# Convolutional Neural Network
-
-# Installing Theano
-# pip install --upgrade --no-deps git+git://github.com/Theano/Theano.git
-
-# Installing Tensorflow
-# Install Tensorflow from the website: https://www.tensorflow.org/versions/r0.12/get_started/os_setup.html
-
-# Installing Keras
-# pip install --upgrade keras
 
 # Part 1 - Building the CNN
 
@@ -52,7 +36,7 @@ classifier.add(Dense(activation="sigmoid", units=1))
 
 
 # Compiling the CNN
-classifier.compile(optimizer = 'adam', loss = 'categorical_crossentropy', metrics = ['accuracy'])
+classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 
 
@@ -67,12 +51,12 @@ train_datagen = ImageDataGenerator(rescale = 1./255,
 
 test_datagen = ImageDataGenerator(rescale = 1./255)
 
-training_set = train_datagen.flow_from_directory('dataset/training_set',
+training_set = train_datagen.flow_from_directory('KeTI/cats/CAT_00',
                                                  target_size = (64, 64),
                                                  batch_size = 32,
                                                  class_mode = 'binary')
 
-test_set = test_datagen.flow_from_directory('dataset/test_set',
+test_set = test_datagen.flow_from_directory('KeTI/test_set',
                                             target_size = (64, 64),
                                             batch_size = 32,
                                             class_mode = 'binary')
